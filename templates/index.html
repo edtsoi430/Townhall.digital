@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Basic Page Needs––––––––––––––––––––––––––– -->
+
+<head>
+    <link rel=”icon” type=”image/x-icon” href="{{url_for('static', filename='img/favicon.ico')}}">
+    <meta http-equiv="content-type" content="text/html">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Townhall digital Facebook Classroom Inviter">
+    <meta name="keywords" content="">
+    <meta name="author" content="Kawai(Edmond) Tsoi">
+    <title>Townhall.digital - Facebook classroom inviter</title>
+
+    <!-- Bootstrap Core CSS ––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Custom CSS ––––––––––––––––––––––––––– -->
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <!-- fontawesome ––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- To add a google font and paste the link -->
+<!--    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:600,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=KoHo:400|Rajdhani:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Open+Sans:300" rel="stylesheet">
+    <!-- Favicon––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
+</head>
+
+<body>
+    <div class="view">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center font-weight-bold" alt="kawai-edmond-tsoi">Townhall.digital</h2>
+                    <h5 alt="kawai-edmond-tsoi-college">Facebook Classrooms Invitation Automation Tools</h5>
+                    <h3 alt="kawai-edmond-tsoi-major">v0.0.1</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--    main contents start from here.-->
+    <div class="container-fluid" id="about">
+        <h1 class="text-center" alt="About - Kawai(Edmond) Tsoi's Personal Website/Portfolio">Welcom to Townhall.digital!</h1>
+<!--        row1-->
+        <div class="row justify-content-center align-items-center" id="bodyIntro">
+            <!-- {{url_for('static', filename='img/me.jpeg')}} -->
+            <div class="col-sm-3"><img class="img-fluid me" src="/static/img/ai.jpeg" alt="kawai-edmond-tsoi" />
+            
+            </div>
+            <div class="col-sm-6" alt="kawai-tsoi-personal-description">
+                <p>Townhall.digital is written in Python3 with Flask framework. The project is designed for users who want to automatically create facebook group with a graphical user-interface. Project developed by Edmond Tsoi and Dominick Huyn, supervised by Professor Elliot Soloway.</p>
+                
+                <form action="/foo" method="POST", enctype="multipart/form-data">
+                    <input type="file" name="emails" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" ID="fileSelect" runat="server" />  <br><br>
+                    <input type="text" name="group-name" placeholder="Enter Group Name"> <br><br>
+                    <input type="text" name="fb-id" placeholder="Enter Facebook ID"> <br><br>
+                    <input type="password" name="fb-pw" placeholder="Enter Facebook PW"> <br><br>
+                    <input type="submit" id = "create-group" value="Create Group"> 
+                </form>
+            </div>
+        </div>
+<!--        row 2-->
+        
+    </div>
+    
+    <div class="bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" alt="copyright-kawai-edmond-tsoi">
+                    <h6 alt="copyright-kawai-edmond-tsoi">Copyright @2019, Powered by Townhall.digital; Supervised by Elliot Soloway</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script>
+        window.onscroll = function() {myFunction()};
+
+        var navBar = document.getElementById("navigation");
+        var sticky = navBar.offsetTop;
+
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            navBar.classList.add("sticky");
+          } else {
+            navBar.classList.remove("sticky");
+          }
+        }
+    </script> -->
+
+
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
