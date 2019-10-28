@@ -95,8 +95,7 @@ def foo():
         file_drive.SetContentFile(f_name)
         os.remove(f_name)
         file_drive.Upload({'convert': True})
-    return ""
-    # return create_group(usr, pwd, group_name, text)
+    return create_group(usr, pwd, group_name, text)
 
 if __name__ == "__main__": 
     app.run(debug=True)

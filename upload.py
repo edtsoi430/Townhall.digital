@@ -1,7 +1,7 @@
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 import csv
-#Login to Google Drive and create drive object
+# Simple code to test out the functionality of Google Drive API. This code uploads a generic csv file to a user authenticated google drive.
 g_login = GoogleAuth()
 g_login.LocalWebserverAuth()
 drive = GoogleDrive(g_login)
