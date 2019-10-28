@@ -1,2 +1,2 @@
 # Objective
-The project aims to provides a graphical user-interface for teachers to automate the process of creating closed-group in Facebook. We would also want to incorporate AI bots that would analyze text using NLP and respond to human posts. Currently still under development.
+This project aims to develop AI bots that would respond to human posts in a closed Facebook group using sentiment-analysis and Google Cloud NLP. The project is conducted at the University of Michigan, Ann Arbor and is used for research purposes. Still under development currently.
