@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from io import TextIOWrapper
 from tkinter import *  
 from selenium import webdriver
@@ -12,6 +12,10 @@ import csv
 import cgi
 import os
 import datetime
+#---------------------Dominick's Libraries-----------------------------
+from response_getter import response
+from get_posts_and_userid import extract_posts
+#---------------------------------------------------------
 
 # Log in to user account and create a closed facebook group with custom name. Still under development.
 option = Options()
@@ -25,14 +29,13 @@ option.add_experimental_option("prefs", {
     "profile.default_content_setting_values.notifications": 1 
 })
 
-
-def create_group(usr_in, pwd_in, group_name_in, f_emails):
+def create_group(usr_in, pwd_in, group_name_in, emails_in):
     driver = webdriver.Chrome(chrome_options=option)
     driver.get('https://www.facebook.com/login') 
-    sleep(1) 
+    sleep(2) 
     username_box = driver.find_element_by_id('email') 
     username_box.send_keys(usr_in) 
-    sleep(1) 
+    sleep(2) 
 
     password_box = driver.find_element_by_id('pass') 
     password_box.send_keys(pwd_in) 
@@ -50,17 +53,17 @@ def create_group(usr_in, pwd_in, group_name_in, f_emails):
 
     group_name_box = driver.find_element_by_xpath("//input[contains(@class,'inputtext pls _29br')]")
     group_name_box.send_keys(group_name_in)
-
-    add_people_box = driver.find_element_by_xpath("//input[contains(@class,'inputtext textInput')]")
-
-    for row in csv.reader(f_emails):
-        add_people_box.send_keys(row[0])
-        sleep(1)
-        add_people_box.send_keys(Keys.RETURN)
-        sleep(1)
-
+    sleep(3)
     submit_btn = driver.find_element_by_xpath("//button[contains(@class,'_42ft _4jy0 layerConfirm _29bh uiOverlayButton _4jy3 _4jy1 selected _51sy')]")
-    # submit_btn.click()
+    submit_btn.click()
+
+    sleep(5)
+    add_people_box = driver.find_element_by_xpath("//input[contains(@class,'inputtext textInput')]")
+    sleep(1)
+    for e in emails_in:
+        add_people_box.send_keys(e)
+        sleep(2)
+        add_people_box.click()
     return render_template('index.html')
 
 app = Flask(__name__, static_url_path='/static')
@@ -72,12 +75,13 @@ def index():
 @app.route('/foo', methods=['GET', 'POST'])
 def foo():
     if request.method == "POST":
-        f = request.files["emails_in"] 
-        text = TextIOWrapper(f, encoding='utf-8 ', errors='replace')
+        emails = []
+        f = TextIOWrapper(request.files["emails_in"], encoding='utf-8 ', errors='replace')
         usr = request.form["fb-id"]
         pwd = request.form["fb-pw"]
         group_name = request.form["group-name"]
-
+        for row in csv.reader(f):
+            emails.append(row[0])
         g_login = GoogleAuth()
         g_login.LocalWebserverAuth()
         drive = GoogleDrive(g_login)
@@ -90,12 +94,20 @@ def foo():
             filewriter.writerow(['Master Account PW', pwd])
             filewriter.writerow("")
             filewriter.writerow(['Invited Members to the Group: '])
-            for row in csv.reader(text):
-                filewriter.writerow([row[0]])
+            for e in emails:
+                filewriter.writerow([e])
         file_drive.SetContentFile(f_name)
         os.remove(f_name)
         file_drive.Upload({'convert': True})
-    return create_group(usr, pwd, group_name, text)
+    return create_group(usr, pwd, group_name, emails)
+
+@app.route('/getComments', methods=['GET', 'POST'])
+def getComments():
+    f_name = "posts-test.xlsx"
+    api_key = "EAAGalcf1NI4BACoAzGCbIgaLxo57YvNZCFyBVPwi5f6d1GfKWCaaC7U5HDFNi4XuqjLGMO1AQgw6YDrK1icqBS98MCAZBZBjlem1GdKU28SdhZBn81IJw1izUKbeySiDW3FuRKnLqXEQWKHb8hmIh95A8RFUFxfWwZASVc8QAfgZDZD"
+    extract = extract_posts(310752336321637, api_key)
+    extract.extract_posts(f_name)
+    return send_file(f_name, as_attachment=True)
 
 if __name__ == "__main__": 
     app.run(debug=True)

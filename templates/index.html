@@ -45,7 +45,7 @@
     
     <!--    main contents start from here.-->
     <div class="container-fluid" id="about">
-        <h1 class="text-center" alt="About - Kawai(Edmond) Tsoi's Personal Website/Portfolio">Welcom to Townhall.digital!</h1>
+        <h1 class="text-center" alt="About - Kawai(Edmond) Tsoi's Personal Website/Portfolio">Welcome to Townhall.digital!</h1>
 <!--        row1-->
         <div class="row justify-content-center align-items-center" id="bodyIntro">
             <!-- {{url_for('static', filename='img/me.jpeg')}} -->
@@ -53,13 +53,16 @@
             
             </div>
             <div class="col-sm-6" alt="kawai-tsoi-personal-description">
-                <p>Townhall.digital is written in Python3 with Flask framework. The project is designed for users who want to automatically create facebook group with a graphical user-interface. Project developed by Edmond Tsoi and Dominick Huyn, supervised by Professor Elliot Soloway.</p>
+                <p>Townhall.digital is written in Python3 and hosted with Flask framework. The project is designed for users who want to automatically create facebook group with a graphical user-interface. Project developed by Edmond Tsoi and Dominick Huyn, supervised by Professor Elliot Soloway and Professor Idit Adler.</p>
                 <form action="/foo" method="POST", enctype="multipart/form-data">
                     <input type="file" name="emails_in" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" ID="fileSelect" runat="server" />  <br><br>
                     <input type="text" name="group-name" placeholder="Enter Group Name"> <br><br>
                     <input type="text" name="fb-id" placeholder="Enter Facebook ID"> <br><br>
                     <input type="password" name="fb-pw" placeholder="Enter Facebook PW"> <br><br>
-                    <input type="submit" id = "create-group" value="Create Group"> 
+                    <input type="submit" id = "create-group" value="Create Group">
+                </form>
+                <form action="/getComments" method="POST", enctype="multipart/form-data">
+                    <input type="submit" id = "download-comments" value="Retrieve Posts">
                 </form>
             </div>
         </div>
@@ -71,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12" alt="copyright-kawai-edmond-tsoi">
-                    <h6 alt="copyright-kawai-edmond-tsoi">Copyright @2019, Powered by Townhall.digital; Supervised by Elliot Soloway</h6>
+                    <h6 alt="copyright-kawai-edmond-tsoi">Copyright @2019, Powered by Townhall.digital; Supervised by Elliot Soloway and Professor Idit Adler.</h6>
                 </div>
             </div>
         </div>
@@ -91,12 +94,6 @@
           }
         }
     </script> -->
-
-
-
-
-
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

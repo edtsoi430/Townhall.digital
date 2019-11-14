@@ -373,9 +373,19 @@ a:hover {
     letter-spacing: .1em;
     line-height: 2em;
     border-radius: 2em;
-    /*    top:1.8 right:3.6 bottom 1.8 left3.6*/
-    /*    the size of button*/
     padding: .5em 1em;
+    color: black;
+    background: rgba(0, 0, 255, 0.5);
+    border: none;
+}
+
+#download-comments{
+    font-size: 1rem;
+    letter-spacing: .1em;
+    line-height: 2em;
+    border-radius: 2em;
+    padding: .5em 1em .5em 1em;
+    margin-top: 1.0em;
     color: black;
     background: rgba(0, 0, 255, 0.5);
     border: none;
